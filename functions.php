@@ -157,3 +157,22 @@ function hilo_product_url( $slug ) {
 	}
 	return home_url( '/?product=' . rawurlencode( $slug ) );
 }
+
+/**
+ * Los enlaces de plantillas y patrones son relativos a la raíz ("/#seccion").
+ * Se convierten a la URL real del sitio para que funcionen también en
+ * instalaciones en subdirectorio (p. ej. WordPress Playground).
+ */
+function hilo_absolute_links( $html ) {
+	if ( false === strpos( $html, '="/' ) ) {
+		return $html;
+	}
+	$home = untrailingslashit( home_url() );
+	return preg_replace( '#(href|action)="/(?!/)#', '$1="' . esc_url( $home ) . '/', $html );
+}
+add_filter( 'render_block', 'hilo_absolute_links' );
+
+/**
+ * Ejecuta los shortcodes del bloque Shortcode también dentro de plantillas de bloques.
+ */
+add_filter( 'render_block_core/shortcode', 'do_shortcode' );
