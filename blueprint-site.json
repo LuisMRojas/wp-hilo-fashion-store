@@ -1,0 +1,56 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "setSiteLanguage",
+			"language": "es_ES"
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/LuisMRojas/wp-hilo-fashion-store",
+				"ref": "main",
+				"refType": "branch"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "hilo"
+			}
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Hilo",
+				"blogdescription": "Ropa de diario hecha para durar"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/wordpress/wp-load.php'; require get_theme_file_path( 'demo/import.php' );"
+		},
+		{
+			"step": "writeFile",
+			"path": "/wordpress/wp-content/mu-plugins/sitio-publico.php",
+			"data": "<?php\n// Sitio público: los visitantes navegan como usuarios anónimos (sin barra de administración).\nif ( ! is_admin() ) {\n\tadd_filter( 'determine_current_user', '__return_zero', 99 );\n}\n"
+		}
+	]
+}
