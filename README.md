@@ -4,7 +4,9 @@
 
 **Hilo** es un tema de bloques creado desde cero para tiendas de moda con WooCommerce. Está centrado en la **visualización de producto**: cómo se ven las prendas en el catálogo, cómo se combinan en un lookbook y cómo se descubren por categoría.
 
-### ▶ [Ver demo en vivo (WordPress Playground)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/LuisMRojas/wp-hilo-fashion-store/main/blueprint.json)
+### 🌐 [Ver el sitio en vivo](https://luismrojas.github.io/wp-hilo-fashion-store/)
+
+¿Quieres explorar el panel de WordPress? [Abrir la demo con acceso de administrador](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/LuisMRojas/wp-hilo-fashion-store/main/blueprint.json)
 
 > La demo instala WordPress + WooCommerce en tu navegador, activa el tema e importa un catálogo de 8 prendas con categorías, ofertas e imágenes. Tarda unos 20–40 segundos.
 
