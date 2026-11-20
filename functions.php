@@ -175,4 +175,7 @@ add_filter( 'render_block', 'hilo_absolute_links' );
 /**
  * Ejecuta los shortcodes del bloque Shortcode también dentro de plantillas de bloques.
  */
-add_filter( 'render_block_core/shortcode', 'do_shortcode' );
+function hilo_render_shortcode_block( $content ) {
+	return do_shortcode( shortcode_unautop( $content ) );
+}
+add_filter( 'render_block_core/shortcode', 'hilo_render_shortcode_block' );
