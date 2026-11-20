@@ -1,0 +1,31 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/",
+	"preferredVersions": { "php": "8.2", "wp": "latest" },
+	"features": { "networking": true },
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" },
+			"options": { "activate": true }
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/LuisMRojas/wp-hilo-fashion-store",
+				"ref": "main",
+				"refType": "branch"
+			},
+			"options": { "activate": true, "targetFolderName": "hilo" }
+		},
+		{
+			"step": "setSiteOptions",
+			"options": { "blogname": "Hilo", "blogdescription": "Ropa de diario hecha para durar" }
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/wordpress/wp-load.php'; require get_theme_file_path( 'demo/import.php' );"
+		}
+	]
+}
