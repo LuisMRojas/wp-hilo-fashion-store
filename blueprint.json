@@ -1,13 +1,27 @@
 {
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"landingPage": "/",
-	"preferredVersions": { "php": "8.2", "wp": "latest" },
-	"features": { "networking": true },
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
 	"steps": [
 		{
+			"step": "setSiteLanguage",
+			"language": "es_ES"
+		},
+		{
 			"step": "installPlugin",
-			"pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" },
-			"options": { "activate": true }
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
 		},
 		{
 			"step": "installTheme",
@@ -17,11 +31,17 @@
 				"ref": "main",
 				"refType": "branch"
 			},
-			"options": { "activate": true, "targetFolderName": "hilo" }
+			"options": {
+				"activate": true,
+				"targetFolderName": "hilo"
+			}
 		},
 		{
 			"step": "setSiteOptions",
-			"options": { "blogname": "Hilo", "blogdescription": "Ropa de diario hecha para durar" }
+			"options": {
+				"blogname": "Hilo",
+				"blogdescription": "Ropa de diario hecha para durar"
+			}
 		},
 		{
 			"step": "runPHP",
